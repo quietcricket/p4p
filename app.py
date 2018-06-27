@@ -67,6 +67,12 @@ def delete_face(faceid):
         faceid,
     ]
     )
+def swap_dict(dic):
+    newdict={}
+    for k,v in dic.items():
+        newdict[v]=k
+    return newdict
+
 
 
 @app.route('/')
@@ -92,14 +98,18 @@ def upload():
     obj.upload_fileobj(file_obj, ExtraArgs=metadata)
     obj.Acl().put(ACL='public-read')
     # Read faces.json
+    faces = json.load(open('faces.json'))
     # Build dictionary of {"id":"name"}
+    swap_faces=swap_dict(faces) 
     # Call rekognition to detect faces
+    faceids=search_faces(filename)
     # for each face id, get the name of the face
-    # db[filename]={"faces":[names]}
-    # save the result to data/filename.json
+    names=[]
+    for ids in faceids:
+        facename=swap_faces[ids]
+        names.append(facename)
+    db[filename]={"faces":names}
     # save db.json
-    db[filename] = {}
-
     json.dump(db, open('db.json', 'w'), indent=2)
     return 'ok'
 
