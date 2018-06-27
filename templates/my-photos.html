@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block body %}
+<div class="container d-flex align-items-center justify-content-between flex-column" style="height:95vh">
+    <div></div>
+    <div class="text-center">
+        <input type="text" class="form-control mb-5" name="name" placeholder="Your Name" onchange="find_photos(this)">
+    </div>
+    <div>
+        <a class="btn btn-primary btn-sm mr-4" href="/">Take Photo</a>
+        <a class="btn btn-primary btn-sm" href="/add-face">Add Face</a>
+        <a class="btn btn-primary btn-sm ml-4 disabled" href="/my-photos">My Photos</a>
+    </div>
+    <script src="/static/my-photos.js"></script>
+</div>
+{% endblock %}
