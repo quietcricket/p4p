@@ -1,17 +1,32 @@
 {% extends 'base.html' %} {% block body %}
-<div class="container d-flex align-items-center justify-content-between flex-column" style="height:95vh">
+<div class="container d-flex align-items-center justify-content-between flex-column" style="height:100%">
     <div></div>
     <div class="text-center">
-        <input type="text" class="form-control mb-5" name="name" placeholder="Your Name" onkeypress="name_changed(this)">
+        <p>Enter your name and take a selfie</p>
+        <input type="text" class="form-control mb-5" id="name" placeholder="Your Name" onblur="show_btns()" onfocus="hide_btns()"
+            onkeydown="name_changed(this)">
         <div class="icon-camera d-none">
             <input type="file" accept="image/*" capture="camera">
         </div>
     </div>
     <div>
-        <a class="btn btn-primary btn-sm mr-4" href="/">Take Photo</a>
-        <a class="btn btn-primary btn-sm disabled" href="/add-face">Add Face</a>
-        <a class="btn btn-primary btn-sm ml-4" href="/my-photos">My Photos</a>
+        <a class="btn btn-primary btn-sm disabled mr-2" href="/">1
+            <br/>Add Your Face</a>
+        <a class="btn btn-primary btn-sm" href="/take-photo">2
+            <br/>Take Photos</a>
+        <a class="btn btn-primary btn-sm ml-2" href="/my-photos">3
+            <br/>Find Photos</a>
     </div>
     <script src="/static/add-face.js"></script>
 </div>
+<style>
+    html {
+        height: 100%;
+        padding: 20px 0;
+    }
+
+    body {
+        height: 100%;
+    }
+</style>
 {% endblock %}

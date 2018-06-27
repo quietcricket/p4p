@@ -1,4 +1,27 @@
 {
-    "02ee4927cabb4add95ae5dfd7763b3ba.jpg": { "faces": ["Logan", "Pearly"], "result": "" },
-    "02ee4927cabb4add95ae5dfd7763b3ba.jpg": { "faces": ["Logan"] }
+  "a8dd4504564c476b85bac624942e7c5c.jpg": {
+    "faces": [
+      "Logan"
+    ]
+  }, 
+  "903885baa3504d3996baea8e732fb744.jpg": {
+    "faces": [
+      "Logan"
+    ]
+  }, 
+  "0da3547b1dd344af93a6a22cad86f04d.jpg": {
+    "faces": [
+      "Logan"
+    ]
+  }, 
+  "1d6188dc84fc42c1bd342180e134a819.jpg": {
+    "faces": [
+      "Logan"
+    ]
+  }, 
+  "2eab789efbe94a6e90f25794e38f0c08.jpg": {
+    "faces": [
+      "Logan"
+    ]
+  }
 }

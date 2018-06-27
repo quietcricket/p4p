@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block body %}
-<div class="container d-flex align-items-center justify-content-between flex-column" style="height:95vh">
+<div class="container d-flex align-items-center justify-content-between flex-column" style="height:100%">
     <div></div>
     <div>
         <div class="icon-camera">
@@ -11,10 +11,23 @@
         </div>
     </div>
     <div>
-        <a class="btn btn-primary btn-sm mr-4 disabled" href="/">Take Photo</a>
-        <a class="btn btn-primary btn-sm" href="/add-face">Add Face</a>
-        <a class="btn btn-primary btn-sm ml-4" href="/my-photos">My Photos</a>
+        <a class="btn btn-primary btn-sm mr-2" href="/">1
+            <br/>Add Your Face</a>
+        <a class="btn btn-primary btn-sm disabled" href="/take-photo">2
+            <br/>Take Photos</a>
+        <a class="btn btn-primary btn-sm ml-2" href="/my-photos">3
+            <br/>Find Photos</a>
     </div>
     <script src="/static/take-photo.js"></script>
 </div>
+<style>
+    html {
+        height: 100%;
+        padding: 20px 0;
+    }
+
+    body {
+        height: 100%;
+    }
+</style>
 {% endblock %}
