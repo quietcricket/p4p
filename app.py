@@ -60,7 +60,14 @@ def index_face(filename):
         return(faceid)
     else:
         return None
-                                                    
+def delete_face(faceid):
+    response = rek.delete_faces(
+    CollectionId=config.COLLECTION,
+    FaceIds=[
+        faceid,
+    ]
+    )
+
 
 @app.route('/')
 def take_photo():
@@ -107,13 +114,16 @@ def update_face():
     metadata = {'CacheControl': 'max-age=9999', 'ContentType': 'image/jpeg'}
     obj.upload_fileobj(file_obj, ExtraArgs=metadata)
     obj.Acl().put(ACL='public-read')
-
-    # read faces.json
-    # delete old faceid
-    # call rekognition to index face
+    if name in faces:
+        del faces[name]     # delete old faceid
+        delete_face(faces[name])
+    faceid=index_face(filename)# call rekognition to index face
     # save face id
     # update faces.json
     # save it
+    if faceid is not None:
+        faces[name]=faceid
+    json.dump(faces, open('faces.json', 'w'), indent=2)
     return 'ok'
 
 
