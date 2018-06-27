@@ -137,6 +137,24 @@ def update_face():
     return 'ok'
 
 
+@app.route('/add-face')
+def add_face():
+    return render_template('add-face.html')
+
+
+@app.route('/my-photos', methods=['GET', 'POST'])
+def find_photos():
+    if request.method == 'GET':
+        return render_template('my-photos.html')
+    name = request.args.get('name')
+    db = json.load(open('db.json'))
+    photos = []
+    for filename, obj in db:
+        if name in obj['faces']:
+            photos.push(filename)
+    return photos.join(",")
+
+
 if __name__ == '__main__':
     app.jinja_env.auto_reload = True
     app.run(port=8080, debug=True)
