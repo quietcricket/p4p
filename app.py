@@ -16,6 +16,51 @@ s3 = boto3.resource('s3', aws_access_key_id=config.AWS_KEY,
 
 app = Flask('p4p')
 
+def delete_collection():
+    response = rek.delete_collection(
+    CollectionId=config.COLLECTION
+    )
+    print(response)
+
+def create_collection():
+    response = rek.create_collection(
+    CollectionId=config.COLLECTION
+    )
+
+def search_faces(filename):
+        if filename.endswith('.jpg'):
+            response = rek.search_faces_by_image(
+                CollectionId=config.COLLECTION,
+                Image={
+                    'S3Object': {
+                    'Bucket': config.BUCKET,
+                    'Name': filename
+                    }
+                },
+                MaxFaces=123
+            )
+            if (len(response["FaceMatches"])>0):
+                faceids=[]
+                for fm in response["FaceMatches"]:
+                    faceid=fm['Face']['FaceId']
+                    faceids.append(faceid)
+                return faceids
+        return None
+
+
+def index_face(filename):
+    resp = rek.index_faces(CollectionId=config.COLLECTION, Image={
+            'S3Object': {
+            'Bucket': config.BUCKET,
+            'Name': filename
+            }
+    })
+    if (len(resp['FaceRecords'])>0):
+        faceid=resp['FaceRecords'][0]['Face']['FaceId']
+        return(faceid)
+    else:
+        return None
+                                                    
 
 @app.route('/')
 def take_photo():
