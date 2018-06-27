@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>P4P</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styles.css">
+
+</head>
+
+<body>
+    <style>
+        .icon-camera,
+        .icon-upload {
+            width: 40px;
+            height: 40px;
+            display: inline-block;
+        }
+    </style>
+    <div class="container p-5">
+        <div class="row">
+            {% for f in faces%}
+            <div class="col-4 face" name="{{f.name}}">
+                <img src="https://s3-us-west-2.amazonaws.com/photos4parents/{{f.name}}.jpg" class="w-100 img-fluid">
+                <div class="text-center mt-2">
+                    <div class="icon-camera mr-4">
+                        <input type="file" accept="image/*" capture="camera">
+                    </div>
+                    <div class="icon-upload">
+                        <input type="file" accept="image/*">
+                    </div>
+                    <h2 class="mt-2">{{f.name}}</h2>
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-load-image/2.19.0/load-image.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="/static/update-face.js"></script>
+</body>
+
+</html>

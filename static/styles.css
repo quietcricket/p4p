@@ -1,0 +1,23 @@
+.icon-camera,
+.icon-upload {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+input[type="file"] {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.icon-upload {
+    background-image: url(/static/icon-upload.png);
+}
+
+.icon-camera {
+    background-image: url(/static/icon-camera.png);
+}
